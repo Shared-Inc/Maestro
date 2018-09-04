@@ -24,7 +24,7 @@ class Dispatcher {
 
     this._linkedInstances.forEach(classInstance => {
       if (classInstance.receiveEvent) {
-        classInstance.receiveEvent(name, value);
+        classInstance.receiveEvent(name, value, this.constructor.name);
       }
     });
   }
