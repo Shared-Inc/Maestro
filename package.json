@@ -1,0 +1,28 @@
+{
+  "name": "react-native-maestro",
+  "version": "1.0.0",
+  "description": "A redux inspired framework for managing application state and neatly organizing application logic.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ditto-app/Maestro.git"
+  },
+  "keywords": [
+    "redux",
+    "react",
+    "native",
+    "state",
+    "application",
+    "logic",
+    "alternative"
+  ],
+  "author": "Braydon Batungbacal <me@braydonb.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ditto-app/Maestro/issues"
+  },
+  "homepage": "https://github.com/ditto-app/Maestro#readme"
+}
