@@ -7,11 +7,8 @@ import Plugin from './Plugin';
 import Store from './Store';
 
 export {
-  Dispatcher,
   Flow,
   Helper,
   Maestro,
   Manager,
-  Plugin,
-  Store,
 };
