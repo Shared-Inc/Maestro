@@ -273,31 +273,51 @@ export default NavigationHelper;
 	* `managers` - an array of Manager classes.
 	* `helpers` - an array of Helper classes.
 
+
+`store` - A property for accessing the global store.
+
+
+`flows` - A property for accessing active flows by name.
+
+
+`managers` - A property for accessing state store managers by name.
+
+
+`helpers` - A property for accessing helpers by name.
+
+
 `link(classInstance)` - Link an instance or object to receive global state store updates and events. `classInstance` will need to implement the `receiveStoreUpdate(newStore)` method to receive global state store updates and `receiveEvent(eventName, eventData)` to receive global events. Typically you'll use this in `componentDidMount` of a component you may want to link.
 * `classInstance` - The class instance or object to link that implements `receiveEvent()` or `receiveStoreUpdate()`.
 
+
 `unlink(classInstance)` - Unlink an instance or object from receiving global store updates and events.
 * `classInstance` - The class instance or object to unlink.
+
 
 `dispatchEvent(eventName, eventValue)` - Dispatches an event to all objects or class instances that were linked using globally to your maestro instance using `link()`. `receiveEvent()` will be invoked on these objects or class instances if available.
 * `eventName` - The name of the event, passed directly to any linked class instance or object's `receiveEvent` method.
 * `eventValue` - The optional value of the event, passed directly to any linked class instance or object's `receiveEvent` method.
 
+
 `startFlow(flowName, data)` - Starts a flow that is available through your maestro instance. If your flowName is userRegister, it'd be accessible at `maestro.flows.userRegister`
 * `flowName` - The name of the flow to start, this corresponds to the value returned by a flow's `static get name() { ... }`
 * `data` - Optional data passed to the `start()` method of the initialized flow.
+
 
 `progressFlow(flowName, data)` - Progress a flow and pass `data` to it.
 * `flowName` - The name of the flow to progress.
 * `data` - The data to pass to the `progress()` method of the flow.
 
+
 `finishFlow(flowName, data)` - Finish a flow and optionall pass `data` to it's `finish()` method.
 * `flowName` - The name of the flow to finish.
 * `data` - The data to pass to the `finish()` method of the flow.
 
+
 `linkToFlow(flowName, classInstance)` - Just like the global state store being able to dispatch updates, flows can also dispatch updates. You can link a class instance / object to receive events or temporary state store updates from a flow. Updates are received just the same by implementing a `receiveStoreUpdate()` or `receiveEvent()` method. However, when these methods are invoked they'll receive an additional argument specifying the flow name the update is from.
 * `flowName` - The name of the flow to link the classInstance / object to.
 * `classInstance` - The class instance to link.
+
 
 `unlinkFromFlow(flowName, classInstance)` - Unlinks a class instance or object from flow updates.
 * `flowName` - The name of the flow to unlink the class instance / object from.
@@ -306,15 +326,39 @@ export default NavigationHelper;
 
 ### `Flow` class
 
+`static get name()` - The globally identifiable name of the flow. This must return a string.
+
+
+`store` - A property for accessing the flow's state store.
+
+
 `link(classInstance)` - Link an instance or object to receive flow specific state store updates and events. `classInstance` will need to implement the `receiveStoreUpdate(newStore)` method to receive flow specific state store updates and `receiveEvent(eventName, eventData)` to receive flow specific events. Typically you'll use this in `componentDidMount` of a component you may want to link.
 * `classInstance` - The class instance or object to link that implements `receiveEvent()` or `receiveStoreUpdate()`.
+
 
 `unlink(classInstance)` - Unlink an instance or object from receiving flow specific store updates and events.
 * `classInstance` - The class instance or object to unlink.
 
+
 `dispatchEvent(eventName, eventValue)` - Dispatches an event to all objects or class instances that were linked using to your flow using `link()`. `receiveEvent()` will be invoked on these objects or class instances if available.
 * `eventName` - The name of the event, passed directly to any linked class instance or object's `receiveEvent` method.
 * `eventValue` - The optional value of the event, passed directly to any linked class instance or object's `receiveEvent` method.
+
+
+`updateStore(object)` - Updates the flow's store using shallow merge and notifies all linked class instances / objects of a flow specific state store change by invoking their `receiveStoreUpdate()` method.
+* `object` - The object to shallow merge against the flow's current state store.
+
+
+`start(data)` - A lifecycle method of flows, when a flow starts this will be invoked with any optionally included `data`. This should not be invoked directly.
+* `data` - An optional data object included from `maestro.startFlow()`.
+
+
+`progress(data)` - A lifecycle method of flows, when a flow progresses this will be invoked with included `data` to progress the flow. This should not be invoked directly.
+* `data` - A data object included from `maestro.progressFlow()`.
+
+
+`finish(data)` - A lifecycle method of flows, when a flow finishes this will be invoked with any optionally included `data`. This should not be invoked directly.
+* `data` - An optional data object included from `maestro.finishFlow()`.
 
 
 ### `Manager` class
