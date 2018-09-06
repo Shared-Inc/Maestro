@@ -1,6 +1,9 @@
 class Logger {
   log(context) {
-    if (!__DEV__) {
+    // https://stackoverflow.com/questions/39022216/react-native-programmatically-check-if-in-remote-js-debugging-is-enabled
+    const debuggerEnabled = typeof atob !== 'undefined';
+
+    if (!__DEV__ || !debuggerEnabled) {
       return;
     }
 
