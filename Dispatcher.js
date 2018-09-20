@@ -9,6 +9,10 @@ class Dispatcher {
     this._store = new Store(this.constructor.initialStore);
   }
 
+  get dispatchKey() {
+    throw new Error('Maestro dispatchers must override get dispatchKey()');
+  }
+
   get store() {
     return this._store.getData();
   }
@@ -24,7 +28,7 @@ class Dispatcher {
 
     this._linkedInstances.forEach(classInstance => {
       if (classInstance.receiveEvent) {
-        classInstance.receiveEvent(name, value, this.constructor.name);
+        classInstance.receiveEvent(name, value, this.dispatchKey);
       }
     });
   }
@@ -32,7 +36,7 @@ class Dispatcher {
   dispatchStoreUpdate() {
     this._linkedInstances.forEach(linkedInstance => {
       if (linkedInstance.receiveStoreUpdate) {
-        linkedInstance.receiveStoreUpdate(this.store, this.constructor.name);
+        linkedInstance.receiveStoreUpdate(this.store, this.dispatchKey);
       }
     });
   }

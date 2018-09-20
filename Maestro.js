@@ -9,6 +9,10 @@ class Maestro extends Dispatcher {
   helpers = {};
   managers = {};
 
+  get dispatchKey() {
+    return 'maestro';
+  }
+
   constructor(options = {}) {
     super();
 
