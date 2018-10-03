@@ -1,6 +1,6 @@
 class Plugin {
-  static get name() {
-    throw new Error('Maestro plugins must override static get name()');
+  static get instanceKey() {
+    throw new Error('Maestro plugins must override static get instanceKey()');
   }
 
   maestro = null;

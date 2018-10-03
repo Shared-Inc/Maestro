@@ -88,7 +88,7 @@ Here's an example of a manager for managing a `user` in the global state.
 import { Manager } from 'react-native-maestro';
 
 class UserManager extends Manager {
-	static get name() { // Required
+	static get instanceKey() { // Required
     	return 'userManager'; // Associates this manager to our maestro instance, accessible via maestro.managers.userManager, maestro is our maestro instance in this exampel
     }
 
@@ -142,7 +142,7 @@ Flows are accessible using your `maestro` instance's `startFlow()`, `progressFlo
 import { Flow } from 'react-native-maestro';
 
 class LoginRegisterFlow extends Flow {
-  static get name() { // required, when starting a flow from your maestro instance, this is the name used.
+  static get instanceKey() { // required, when starting a flow from your maestro instance, this is the name used.
     return 'loginRegisterFlow';
   }
 
@@ -211,7 +211,7 @@ import { Helper } from 'react-native-maestro';
 import { NavigationActions, StackActions } from 'react-navigation';
 
 class NavigationHelper extends Helper {
-  static get name() {
+  static get instanceKey() {
     return 'navigationHelper';
   }
 
@@ -317,7 +317,7 @@ export default NavigationHelper;
 
 `maestro` - A property that allows direct access of your maestro instance.
 
-`static get name()` - The globally identifiable name of the flow. This must return a string. This is used to access the manager from your maestro instance's `flows` property.
+`static get instanceKey()` - The globally identifiable name of the flow. This must return a string. This is used to access the manager from your maestro instance's `flows` property.
 
 `store` - A property for accessing the flow's state store.
 
@@ -347,7 +347,7 @@ export default NavigationHelper;
 
 `maestro` - A property that allows direct access of your maestro instance.
 
-`static get name()` - The globally identifiable name of the manager. This must return a string. This is used to access the manager from your maestro instance's `managers` property.
+`static get instanceKey()` - The globally identifiable name of the manager. This must return a string. This is used to access the manager from your maestro instance's `managers` property.
 
 `static get storeName()` - The property of the global store this manager's managed state store will be assigned to. If this returned `user` for example, the global store would have a `user` property with it's value being controlled by this manager.
 
@@ -360,7 +360,7 @@ export default NavigationHelper;
 
 `maestro` - A property that allows direct access of your maestro instance.
 
-`static get name()` - The globally identifiable name of the helper. This must return a string. This is used to access the manager from your maestro instance's `helpers` property.
+`static get instanceKey()` - The globally identifiable name of the helper. This must return a string. This is used to access the manager from your maestro instance's `helpers` property.
 
 ### linked instances / object methods
 

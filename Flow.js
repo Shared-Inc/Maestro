@@ -2,8 +2,8 @@ import Dispatcher from './Dispatcher';
 import Logger from './Logger';
 
 class Flow extends Dispatcher {
-  static get name() {
-    throw new Error('Maestro flows must override static get name()');
+  static get instanceKey() {
+    throw new Error('Maestro flows must override static get instanceKey()');
   }
 
   maestro = null;

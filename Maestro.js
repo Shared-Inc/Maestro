@@ -20,19 +20,19 @@ class Maestro extends Dispatcher {
 
     if (flowClasses) {
       flowClasses.forEach(FlowClass => {
-        this.flowClasses[FlowClass.name] = FlowClass;
+        this.flowClasses[FlowClass.instanceKey] = FlowClass;
       });
     }
 
     if (helperClasses) {
       helperClasses.forEach(HelperClass => {
-        this.helpers[HelperClass.name] = new HelperClass(this);
+        this.helpers[HelperClass.instanceKey] = new HelperClass(this);
       });
     }
 
     if (managerClasses) {
       managerClasses.forEach(ManagerClass => {
-        this.managers[ManagerClass.name] = new ManagerClass(this);
+        this.managers[ManagerClass.instanceKey] = new ManagerClass(this);
       });
     }
 
