@@ -24,6 +24,10 @@ class Manager extends Plugin {
 
     this.maestro.dispatchStoreUpdate();
   }
+
+  resetStore() {
+    this.updateStore(this.constructor.initialStore);
+  }
 }
 
 export default Manager;

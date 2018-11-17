@@ -334,6 +334,8 @@ export default NavigationHelper;
 `updateStore(object)` - Updates the flow's store using shallow merge and notifies all linked class instances / objects of a flow specific state store change by invoking their `receiveStoreUpdate()` method.
 * `object` - The object to shallow merge against the flow's current state store.
 
+`resetStore()` - Resets the manager's store to the value of it's initialStore.
+
 `start(data)` - A lifecycle method of flows, when a flow starts this will be invoked with any optionally included `data`. This should not be invoked directly.
 * `data` - An optional data object included from `maestro.startFlow()`.
 

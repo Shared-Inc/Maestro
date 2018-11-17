@@ -1,6 +1,6 @@
 {
   "name": "react-native-maestro",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A redux inspired framework for managing application state and neatly organizing application logic.",
   "main": "index.js",
   "scripts": {
