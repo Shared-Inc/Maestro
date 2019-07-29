@@ -48,9 +48,9 @@ class Maestro extends Dispatcher {
       data,
     ]);
 
-    flow.start(data);
-
     this.flows[flowName] = flow;
+
+    flow.start(data);
   }
 
   progressFlow(flowName, data) {
