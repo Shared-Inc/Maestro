@@ -3,7 +3,7 @@
 These docs are a work in progress but aim to be as complete and helpful as possible.
 
 Maestro is a light weight, succinctly written framework for managing global application state
-and common patterns within react native applications in an organized manner. It is written to be performant and highly flexible.
+and common patterns within platform agnostic react or react native applications in an organized manner. It is written to be performant and highly flexible.
 
 ### Installation
 
